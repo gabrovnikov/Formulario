@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Css/styles.css">
+    
+</head>
+<body>
+    <div class="content">
+        <h1>Bugs e Sugestões</h1>
+        <form id="form">   
+            <p>Selecione sobre o que você quer falar</p>
+        <div class="box-select">
+           <div>
+            <input type="radio" id="b" value="b" name="selecao">
+            <label for="">Bug</label>
+        </div>
+        <div>
+            <input type="radio" id="s" value="s" name="selecao">
+            <label for="">Sugestão</label>
+        </div>
+        </div>
+            <div>
+                <input type="text" placeholder="Digite seu nome" class="inputs required" id="name" >
+                <span class="span-required" id="span-name"> Nome precisa ser válido</span>
+            </div>
+            <div>
+            <textarea class="inputs required" name="descricao" id="descricao" cols="25" rows="10" placeholder="Digite o bug/sugestão" oninput="descricaoValidate()"></textarea>
+            <span class="span-required" id="span-descricao">Bug/Sugestão deve ser maior que 15 caracteres</span>
+            </div>
+            <div>
+            <button type="submit">Enviar</button>
+            
+            </div>
+        
+        </form>
+        </div>
+        
+</body>
+
+<script>
+
+    const form = document.getElementById('form');
+    //const campos = document.querySelectorAll('.required');
+    const name = document.querySelector('#name');
+    const descricao = document.querySelector('#descricao');
+    const spanName = document.querySelector('#span-name');
+    const spanDescricao = document.querySelector('#span-descricao');
+
+    function descricaoValidate(){
+
+if(descricao.value.length < 16){
+
+    console.log("Bug/Sugestão deve ser maior que 10 caracteres");
+    setError();
+}
+
+else {
+    console.log("Validado");
+    removeError();
+}
+
+
+function setError(){
+
+    descricao.style.border='2px solid #e63636';
+    spanDescricao.style.display = 'block';
+    
+}
+
+function removeError(){
+    descricao.style.border='';
+    spanDescricao.style.display = 'none';
+}
+
+}
+
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if(name.value === ""){
+            alert("Por favor, preencha seu nome");
+            return;
+        }
+
+        
+        
+
+        if(descricao.value.length < 11){
+            alert("Bug/Sugestão deve ser maior que 10 caracteres");
+            return;
+        }
+
+        form.submit();
+
+    })
+
+</script>
+
+</html>
